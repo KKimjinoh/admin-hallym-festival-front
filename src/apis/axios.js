@@ -37,9 +37,9 @@ export const postCommunity = async (data) => {
 };
 export const deleteCommunityDetail = async (id, password) => {
   try {
-    const response = await axiosInstance.delete(`/community/${id}`, {
-      data: { password: password },
-    });
+    const response = await axiosInstance.delete(
+      `/community/${id}?password=${password}`
+    );
     if (response.status >= 200 && response.status < 300) {
       return true;
     } else {
