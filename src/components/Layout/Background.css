@@ -1,0 +1,32 @@
+.backgroundStyle {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../../assets/background1.webp");
+  background-size: cover;
+  background-position: center center;
+  z-index: -1;
+}
+.logo1 {
+  position: relative;
+  top: 15%;
+  user-select: none;
+}
+.title-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 17%;
+}
+.title {
+  font-family: "KoPubWorldBatang_Pro";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18.2609px;
+  line-height: 28px;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6%;
+}
