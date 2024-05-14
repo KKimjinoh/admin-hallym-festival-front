@@ -11,43 +11,45 @@ const AdminLostItem = () => {
   const navigate = useNavigate();
 
   // 데이터 리스트 get
-  useEffect(() => {
-    const dataList = async () => {
-      try {
-        await getLostList().then((res) => {
-          const newTime = res.data.map((item) => {
-            const formattedTime = new Date(item.upload_time).toLocaleString(
-              "ko-KR",
-              {
-                day: "2-digit",
-                hour: "2-digit",
-                minute: "2-digit",
-              }
-            );
-            return { ...item, upload_time: formattedTime };
-          });
-
-          setData(newTime);
-          setLoad(true);
-          console.log(res.data[0].upload_time);
+  const dataList = async () => {
+    try {
+      await getLostList().then((res) => {
+        const newTime = res.data.map((item) => {
+          const formattedTime = new Date(item.upload_time).toLocaleString(
+            "ko-KR",
+            {
+              day: "2-digit",
+              hour: "2-digit",
+              minute: "2-digit",
+            }
+          );
+          return { ...item, upload_time: formattedTime };
         });
-        console.log("데이터 수신");
-      } catch (e) {
-        console.error("데이터 에러", e);
-      }
-    };
+
+        setData(newTime);
+        setLoad(true);
+        console.log(res.data[0].upload_time);
+      });
+      console.log("데이터 수신");
+    } catch (e) {
+      console.error("데이터 에러", e);
+    }
+  };
+  useEffect(() => {
     dataList();
   }, []);
 
   const clilckDeleteLostItem = async (id) => {
     try {
-      const response = deleteLostItem(id);
+      setLoad(false);
+      const response = await deleteLostItem(id);
       if (response) {
         console.log("삭제되었습니다.");
-        navigate("/lostItem");
+        await dataList(); // 삭제 후 데이터 새로고침
       }
     } catch (error) {
-      console.log("삭제안됨!!!!!!!!!!!!");
+      console.log("삭제안됨!!!!!!!!!!!!", error);
+      setLoad(true);
     }
   };
 

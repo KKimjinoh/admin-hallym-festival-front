@@ -3,16 +3,14 @@ import { useNavigate } from "react-router-dom";
 const AdminHeader = ({ headcenter }) => {
   const navigate = useNavigate();
   const handleGoBack = () => {
-    if (headcenter !== "관리자 분실물" || headcenter !== "관리자 커뮤니티") {
-      navigate("/admin"); // -1을 넘겨 이전 페이지로 이동
+    if (
+      headcenter === "관리자 분실물 추가" ||
+      headcenter === "관리자 커뮤니티 검색" ||
+      headcenter === "관리자 분실물 검색"
+    ) {
+      navigate(-1);
     }
-    // if (headcenter === "관리자 분실물") {
-    //   console.log("관리자 분실물");
-    //   navigate("/searchlostitem");
-    // } else if (headcenter === "관리자 커뮤니티") {
-    //   console.log("관리자 커뮤니티");
-    //   navigate("/searchcommunity");
-    // }
+    navigate("/admin"); // -1을 넘겨 이전 페이지로 이동
   };
   const clickSearch = () => {
     if (headcenter === "관리자 분실물") {

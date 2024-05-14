@@ -6,7 +6,7 @@ const SearchLostItem = () => {
     <div>
       <div>
         <Background />
-        <AdminHeader headcenter="관리자 커뮤니티 검색" />
+        <AdminHeader headcenter="관리자 분실물 검색" />
       </div>
     </div>
   );
