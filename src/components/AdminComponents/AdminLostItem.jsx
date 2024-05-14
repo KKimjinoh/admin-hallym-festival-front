@@ -44,6 +44,7 @@ const AdminLostItem = () => {
       const response = deleteLostItem(id);
       if (response) {
         console.log("삭제되었습니다.");
+        navigate("/lostItem");
       }
     } catch (error) {
       console.log("삭제안됨!!!!!!!!!!!!");
