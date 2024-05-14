@@ -15,7 +15,21 @@ const PlusNewLostItem = () => {
             <div>등록하기</div>
             <div className="postBtn">등록</div>
           </div>
-          <div className="PlusItem-wrapper-body-content"></div>
+          <div className="PlusItem-wrapper-body-content">
+            <div>
+              <label>물품명을 입력하세요</label>
+              <input type="text" placeholder="물품명을 상세히 입력해주세요" />
+            </div>
+            <div>
+              <label>발견위치를 적어주세요</label>
+              <input type="text" placeholder="상세하게 적어주면 더 좋습니다" />
+            </div>
+            <div>
+              <label>사진을 등록해주세요</label>
+              <div className="pre_img"></div>
+              <input type="file" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
