@@ -21,19 +21,14 @@ const Login = () => {
         "아직 토큰 불러오기 전, recoil: login state=",
         loginAtomState
       );
-
       e.preventDefault(); //submit시 기본 브라우저 동작인 새로고침을 막음
-
       const accessToken = await loginApi(loginForm.id, loginForm.password);
-
       localStorage.setItem("access", accessToken); // 추후 해시 암호화 하기
       setLoginAtomState(true);
       console.log("토큰 불러온 후, recoil: login state=", loginAtomState);
-
-      // setLoginAtom(true); ->아톰을 불러오지 않고 세팅만 할 경우 useSetRecoilState만 사용
       console.log("login 성공! 로컬스토리지를 확인해주세요");
-
       navigate("/admin");
+      // setLoginAtom(true); ->아톰을 불러오지 않고 세팅만 할 경우 useSetRecoilState만 사용
     } catch (error) {
       setLoginAtomState(false);
       console.log("로그인 실패, recoil: login state= ", loginAtomState);

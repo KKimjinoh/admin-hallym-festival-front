@@ -9,7 +9,9 @@ import Admin from "./pages/Admin/Admin.jsx";
 import AdminCommunity from "../src/components/AdminComponents/AdminCommunity.jsx";
 import AdminLostItem from "../src/components/AdminComponents/AdminLostItem.jsx";
 import AdminNotice from "../src/components/AdminComponents/AdminNotice.jsx";
-
+import SearchCommunity from "./components/AdminComponents/SearchCommunity.jsx";
+import SearchLostItem from "./components/AdminComponents/SearchLostItem.jsx";
+import PlusNewLostItem from "./components/AdminComponents/PlusNewLostItem.jsx";
 const App = () => {
   function setScreenSize() {
     let vh = window.innerHeight * 0.01;
@@ -30,6 +32,9 @@ const App = () => {
           <Route path="lostitem" element={<AdminLostItem />} />
           <Route path="notice" element={<AdminNotice />} />
           <Route path="community" element={<AdminCommunity />} />
+          <Route path="searchcommunity" element={<SearchCommunity />} />
+          <Route path="searchlostitem" element={<SearchLostItem />} />
+          <Route path="plusitem" element={<PlusNewLostItem />} />
         </Routes>
       </div>
     </>

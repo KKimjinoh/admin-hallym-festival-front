@@ -1,0 +1,103 @@
+.lostItem {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  .loading {
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    color: black;
+    transform: translateX(-50%);
+    width: 100%;
+  }
+
+  .list_wrapper {
+    position: fixed;
+    top: 10%;
+    height: 65%;
+    width: 100%;
+    overflow-y: scroll;
+    align-self: center;
+    padding: 5%;
+    /* 세로 스크롤이 필요한 경우 스크롤을 표시 */
+  }
+  .item_wrapper {
+    display: flex;
+    padding: 2%;
+    width: 100%;
+    height: 30%;
+    border-radius: 8px;
+    border: 1.1px solid rgba(247, 247, 247, 0.4);
+    background: radial-gradient(
+        102.04% 362.09% at 33.88% 16.84%,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.8) 100%
+      )
+      rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+
+    margin-bottom: 10px;
+    max-height: calc(100vh - 100px);
+    line-height: 60px;
+    text-align: start;
+
+    img {
+      width: 30%;
+      height: 100%;
+      margin-right: 20px;
+    }
+    .text {
+      height: 40px;
+      width: 70%;
+      color: white;
+      line-height: 40px;
+      &-t1 {
+        height: 40px;
+        width: 100%;
+        display: flex;
+        // background-color: rgb(144, 110, 66);
+        justify-content: space-between;
+        align-content: center;
+        .item_name {
+          width: 90%;
+          //   background-color: antiquewhite;
+        }
+        .trash {
+          width: 16px;
+          height: 100%;
+          fill: #3d80cb;
+        }
+      }
+    }
+
+    // .t3 {
+    //   position: absolute;
+    //   bottom: 0;
+    //   right: 0;
+    //   font-size: 12px;
+
+    //   padding-right: 20px;
+    // }
+  }
+  .modal_bnt_wrapper {
+    position: fixed;
+    height: 60px;
+    width: 100%;
+    bottom: 0;
+    user-select: none; //텍스트 커서 없애기
+    .modal_bnt {
+      margin-right: 6%;
+      margin-bottom: 5%;
+      float: right;
+      height: 50px;
+      width: 50px;
+      background-image: url("../AddMemberIcon.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 50%;
+      background-color: #3d80cb;
+      opacity: 100;
+    }
+  }
+}

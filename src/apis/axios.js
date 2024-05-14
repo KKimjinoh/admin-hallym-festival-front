@@ -100,6 +100,22 @@ export const getLostList = async () => {
   }
 };
 
+export const deleteLostItem = async (id) => {
+  try {
+    const response = await axiosInstance.delete(`/find/${id}`);
+    if (response.status >= 200 && response.status < 300) {
+      return true;
+    } else {
+      // 서버 응답이 400번대이면 false
+      console.log("네트워크가 200번대가 아님!");
+      return false;
+    }
+  } catch (error) {
+    console.error("분실물 상세 삭제 실패 : ", error);
+    return false;
+  }
+};
+
 export const addReservation = async (data) => {
   try {
     const response = await axiosInstance.post("/reservation", data);
