@@ -22,7 +22,6 @@ const AdminNotice = () => {
   useEffect(() => {
     const fetchNotices = async () => {
       const response = await getNoticeList();
-      console.log(response.data);
       setNotices(response.data);
     };
     fetchNotices();

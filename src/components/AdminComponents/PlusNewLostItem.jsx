@@ -93,14 +93,14 @@ const PlusNewLostItem = () => {
         <div className="PlusItem-wrapper-head"></div>
         <div className="PlusItem-wrapper-body">
           <div className="PlusItem-wrapper-body-title">
-            <div></div>
-            <div>등록하기</div>
+            <div className="box1"></div>
+            <div className="box2">등록하기</div>
             <div className="postBtn" onClick={() => clickPostData()}>
               등록
             </div>
           </div>
           <div className="PlusItem-wrapper-body-content">
-            <div>
+            <div className="input-box">
               <label>물품명을 입력하세요</label>
               <input
                 type="text"
@@ -111,7 +111,7 @@ const PlusNewLostItem = () => {
                 }
               />
             </div>
-            <div>
+            <div className="input-box">
               <label>발견위치를 적어주세요</label>
               <input
                 type="text"
@@ -122,19 +122,25 @@ const PlusNewLostItem = () => {
                 }
               />
             </div>
-            <div>
-              <label>사진을 등록해주세요</label>
-              <div className="pre_img" style={{ display: "inline-block" }}>
-                <img
-                  src={preImageURL}
-                  style={{ width: "100px", height: "100px" }}
+            <div className="image_box">
+              <div className="image_box_wrapper">
+                <div className="pre_img" style={{ display: "inline-block" }}>
+                  <img
+                    src={preImageURL}
+                    style={{ width: "300px", height: "300px" }}
+                  />
+                </div>
+                <label htmlFor="file">
+                  <div className="btn-upload">파일 업로드하기</div>
+                </label>
+                <input
+                  accept="image/*"
+                  type="file"
+                  id="file"
+                  name="file"
+                  onChange={handleImageChange}
                 />
               </div>
-              <input
-                accept="image/*"
-                type="file"
-                onChange={handleImageChange}
-              />
             </div>
           </div>
         </div>
