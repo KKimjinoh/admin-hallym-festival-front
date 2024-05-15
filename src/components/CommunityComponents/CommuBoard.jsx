@@ -22,11 +22,8 @@ const CommuBoard = () => {
     const fetchCommunityData = async () => {
       try {
         const response = await getCommunity();
-        // console.log(response.data);
         const reversedArticle = response.data.reverse(); //얘는 article 잘안찍힘
-        // setArticle(response.data); //얘는 article 잘찍힘
         setArticle(reversedArticle);
-        console.log(article);
         printDate(); //
       } catch (error) {
         console.log("커뮤니티 불러오기 안됨");
@@ -64,26 +61,6 @@ const CommuBoard = () => {
         }
       }
     });
-    //여기서 article배열을 순회하면서 보드에 넣을 시간을 로직에 따라 추가로 넣어줌
-    // const now = new Date();
-    // const nowDate = now.getDate(); //일
-    // const nowHour = now.getHours(); //시
-    // const nowMin = now.getMinutes(); //분
-    // if (nowDate !== fromServerDate.day) {
-    //   nowDate - fromServerDate.day;
-    //   setShowTime(`${nowDate - fromServerDate.day}일전`);
-    // } else {
-    //   setShowTime("같은날");
-    //   if (fromServerDate.hour < nowHour) {
-    //     setShowTime(`${-1 * (fromServerDate.hour - nowHour)}시간 전`);
-    //   } else {
-    //     if (fromServerDate.minute < nowMin) {
-    //       setShowTime(`${-1 * (fromServerDate.minute - nowMin)}분 전`);
-    //     } else {
-    //       setShowTime("지금");
-    //     }
-    //   }
-    // }
   };
 
   const clickCloseModal = () => {

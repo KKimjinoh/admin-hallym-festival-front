@@ -35,11 +35,10 @@ export const postCommunity = async (data) => {
     return false;
   }
 };
-export const deleteCommunityDetail = async (id, password) => {
+//새로운 엔드포인트 설정
+export const deleteCommunityDetail = async (id) => {
   try {
-    const response = await axiosInstance.delete(`/community/${id}`, {
-      data: { password: password },
-    });
+    const response = await axiosInstance.delete(`/community/${id}`);
     if (response.status >= 200 && response.status < 300) {
       return true;
     } else {
@@ -97,6 +96,22 @@ export const getLostList = async () => {
     return response;
   } catch (error) {
     console.error("리스트 불러오기 실패 :", error);
+  }
+};
+
+export const deleteLostItem = async (id) => {
+  try {
+    const response = await axiosInstance.delete(`/find/${id}`);
+    if (response.status >= 200 && response.status < 300) {
+      return true;
+    } else {
+      // 서버 응답이 400번대이면 false
+      console.log("네트워크가 200번대가 아님!");
+      return false;
+    }
+  } catch (error) {
+    console.error("분실물 상세 삭제 실패 : ", error);
+    return false;
   }
 };
 
