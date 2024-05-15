@@ -1,4 +1,4 @@
-.AdminCommunity {
+.SearchCommunity {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,9 +17,9 @@
       align-items: center;
       overflow: scroll;
 
-      &-notice {
+      &-search {
         // position: fixed;
-        height: 7rem;
+        height: 10%;
         width: 86%;
         background-color: rgba(61, 128, 203, 0.8);
         border-radius: 11px;
@@ -27,6 +27,14 @@
         margin-top: 3%;
         color: rgb(255, 255, 255);
         font-family: "Pretendard-bold";
+        display: flex;
+        flex-direction: column;
+        label {
+          height: 30px;
+        }
+        input {
+          height: 30px;
+        }
       }
       &-board {
         height: 100%;

@@ -35,11 +35,10 @@ export const postCommunity = async (data) => {
     return false;
   }
 };
-export const deleteCommunityDetail = async (id, password) => {
+//새로운 엔드포인트 설정
+export const deleteCommunityDetail = async (id) => {
   try {
-    const response = await axiosInstance.delete(
-      `/community/${id}?password=${password}`
-    );
+    const response = await axiosInstance.delete(`/community/${id}`);
     if (response.status >= 200 && response.status < 300) {
       return true;
     } else {
