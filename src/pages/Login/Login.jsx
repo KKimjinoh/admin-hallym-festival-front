@@ -23,12 +23,11 @@ const Login = () => {
         "아직 토큰 불러오기 전, recoil: login state=",
         loginAtomState
       );
-      const { accessToken, refreshToken } = await loginApi(
+      const accessToken = await loginApi(
         loginForm.username,
         loginForm.password
       );
       localStorage.setItem("access", accessToken); // 추후 해시 암호화 하기
-      localStorage.setItem("refresh", refreshToken); // 추후 해시 암호화 하기
 
       setLoginAtomState(true);
       console.log("토큰 불러온 후, recoil: login state=", loginAtomState);

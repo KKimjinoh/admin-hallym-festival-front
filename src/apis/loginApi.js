@@ -7,11 +7,11 @@ export const loginApi = async (id, pw) => {
       {
         username: id,
         password: pw,
+      },
+      {
+        withCredentials: true,
+        //http only cookie 허용 ->refresh토큰 가져옴, 클라이언트 측에서 확인 불가
       }
-      // {
-      //   withCredentials: true,
-      //   //http only cookie 허용 ->refresh토큰 가져옴, 클라이언트 측에서 확인 불가
-      // }
     );
     console.log("loginApi 함수: 토큰을 받아옴 ", response.data);
     return response.data;

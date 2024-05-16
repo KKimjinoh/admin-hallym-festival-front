@@ -75,7 +75,7 @@ const PlusNewLostItem = () => {
 
     try {
       const response = await axios.post(
-        "http://13.209.218.51/api/find",
+        "http://13.209.218.51/api/admin/find",
         formData,
         {
           headers: {

@@ -92,7 +92,7 @@ const CommuBoard = () => {
                   <div className="communComponent-bundle">
                     <div className="communComponent-box">
                       <div className="communComponent-box-left">
-                        <div className="noName">익명{item.id}</div>
+                        <div className="noName">익 명{item.id}</div>
                         <div>{item.showDate}</div>
                       </div>
                       <svg
