@@ -63,7 +63,7 @@ export const getNoticeList = async () => {
 };
 export const postNoticeList = async (data) => {
   try {
-    const response = await axiosInstance.post("/notice", data);
+    const response = await axiosInstance.post("/notice/create", data);
     if (response.status >= 200 && response.status < 300) {
       return true;
     } else {
