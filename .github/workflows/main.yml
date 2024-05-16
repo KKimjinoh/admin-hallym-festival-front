@@ -32,7 +32,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} #secrets에 SECRET KEY
         run: |
           aws s3 cp \
-            —recursive \
-            —region ap-northeast-2 \
+            --recursive \
+            --region ap-northeast-2 \
             dist s3://hallym-festival-admin.com
             # build에서 dist로 변경
