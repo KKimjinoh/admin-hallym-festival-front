@@ -8,7 +8,6 @@ const NoticeModal = ({ id, putOrPost, onClose, originData }) => {
     content: "",
   });
   useEffect(() => {
-    // console.log(id);
     if (mode === "put") {
       setInputData({ title: originData.title, content: originData.content });
     }
@@ -17,9 +16,6 @@ const NoticeModal = ({ id, putOrPost, onClose, originData }) => {
   // const{originTitle,originContent}=originData
   const clickPutOrPost = async () => {
     try {
-      // const title=inputData.title
-      // const content=inputData.content
-      console.log(inputData);
       mode === "post"
         ? await postNoticeList(inputData)
         : await putNoticeList(id, inputData);
