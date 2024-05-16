@@ -5,8 +5,16 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./PlusNewLostItem.scss";
 // import Resizer from "react-image-file-resizer";
-
+import { useRecoilValue } from "recoil";
+import { LoginAtom } from "../../recoil/LoginAtom.js";
+import { useEffect } from "react";
 const PlusNewLostItem = () => {
+  const isLogin = useRecoilValue(LoginAtom); // Recoil 상태를 가져옴
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!isLogin) navigate("/");
+  }, []);
+
   const [stringData, setStringData] = useState({
     name: "",
     location: "",
@@ -14,7 +22,6 @@ const PlusNewLostItem = () => {
 
   const [imageFile, setImageFile] = useState(null);
   const [preImageURL, setPreImageURL] = useState("");
-  const navigate = useNavigate();
 
   // const resizeFile = (file) =>
   //   new Promise((resolve) => {
