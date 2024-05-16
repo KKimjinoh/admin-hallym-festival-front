@@ -7,7 +7,7 @@ import { Background } from "../../components";
 import "./Login.scss";
 const Login = () => {
   const [loginForm, setLoginForm] = useState({
-    id: "",
+    username: "",
     password: "",
   });
 
@@ -15,15 +15,20 @@ const Login = () => {
   const [loginAtomState, setLoginAtomState] = useRecoilState(LoginAtom);
   // const setLoginAtom = useSetRecoilState(LoginAtom);
 
-  const submitLogin = async (e) => {
+  const submitLogin = async () => {
+    // e.preventDefault(); //submit시 기본 브라우저 동작인 새로고침을 막음
+
     try {
       console.log(
         "아직 토큰 불러오기 전, recoil: login state=",
         loginAtomState
       );
-      e.preventDefault(); //submit시 기본 브라우저 동작인 새로고침을 막음
-      const accessToken = await loginApi(loginForm.id, loginForm.password);
+      const accessToken = await loginApi(
+        loginForm.username,
+        loginForm.password
+      );
       localStorage.setItem("access", accessToken); // 추후 해시 암호화 하기
+
       setLoginAtomState(true);
       console.log("토큰 불러온 후, recoil: login state=", loginAtomState);
       console.log("login 성공! 로컬스토리지를 확인해주세요");
@@ -49,9 +54,9 @@ const Login = () => {
               <input
                 id="id"
                 name="id"
-                value={loginForm.id}
+                value={loginForm.username}
                 onChange={(e) =>
-                  setLoginForm({ ...loginForm, id: e.target.value })
+                  setLoginForm({ ...loginForm, username: e.target.value })
                 }
               ></input>
             </div>

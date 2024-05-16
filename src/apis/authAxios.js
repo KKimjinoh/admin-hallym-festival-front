@@ -5,20 +5,19 @@ import { getNewRefreshToken } from "./refresh";
 export const getAuthAxios = (token) => {
   const accessToken = token;
   const authAxios = axios.create({
-    baseURL: "http://43.201.23.0/members",
+    baseURL: "http://13.209.218.51/api/admin",
     headers: {
-      Authorization: accessToken,
+      Authorization: `Bearer ${accessToken}`,
     },
+    withCredentials: true,
   });
-
   authAxios.interceptors.response.use(
     (res) => res,
     async (error) => {
       if (error.response.status === 401) {
-        const { accessToken, refreshToken } = await getNewRefreshToken();
+        const accessToken = await getNewRefreshToken();
         error.config.headers.Authorization = accessToken;
         localStorage.setItem("access", accessToken);
-        localStorage.setItem("refresh", refreshToken);
         return (await axios.get(error.config.url, error.config)).data;
       }
     }

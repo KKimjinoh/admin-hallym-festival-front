@@ -3,10 +3,10 @@ import axios from "axios";
 export const loginApi = async (id, pw) => {
   try {
     const response = await axios.post(
-      "http://localhost:8080/members/login",
+      "http://13.209.218.51/api/admin/login",
       {
-        id,
-        pw,
+        username: id,
+        password: pw,
       },
       {
         withCredentials: true,

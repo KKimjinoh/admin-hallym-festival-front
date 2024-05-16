@@ -2,8 +2,19 @@ import React from "react";
 import AdminHeader from "./AdminHeader.jsx";
 import Background from "../Layout/Background.jsx";
 import CommuBoard from "../CommunityComponents/CommuBoard.jsx";
+
+import { useRecoilValue } from "recoil";
+import { LoginAtom } from "../../recoil/LoginAtom.js";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+
 import "./AdminCommunity.scss";
 const AdminCommunity = () => {
+  const isLogin = useRecoilValue(LoginAtom); // Recoil 상태를 가져옴
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!isLogin) navigate("/");
+  }, []);
   return (
     <div className="AdminCommunity">
       <Background />

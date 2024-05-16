@@ -27,7 +27,7 @@ const App = () => {
         <Routes>
           <Route path="/" exact={true} element={<Login />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="login" element={<Login />} />
+          <Route path="/api/admin/login" element={<Login />} />
           <Route path="admin" element={<Admin />} />
           <Route path="lostitem" element={<AdminLostItem />} />
           <Route path="notice" element={<AdminNotice />} />

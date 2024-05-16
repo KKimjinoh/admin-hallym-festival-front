@@ -1,20 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Admin.scss";
 import { Background } from "../../components";
-import { Link } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
+import { Link, useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 import { LoginAtom } from "../../recoil/LoginAtom";
-//렌더링 시 로그인 여부로 로
+import { useSetRecoilState } from "recoil";
+import { logout } from "../../apis/logout";
+//렌더링 시 로그인 여부로
 //로그인 httponly해보고 안되면 기존
 const Admin = () => {
+  const isLogin = useRecoilValue(LoginAtom); // Recoil 상태를 가져옴
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!isLogin) navigate("/");
+  }, []);
+
   const setLoginAtomState = useSetRecoilState(LoginAtom);
 
-  const clickLogout = () => {
+  const clickLogout = async () => {
     const logoutTrue = confirm("로그아웃하시겠습니까?");
+
     console.log(logoutTrue);
     if (logoutTrue) {
+      try {
+        const result = await logout();
+        console.log(result);
+      } catch (error) {
+        console.log(error);
+      }
       setLoginAtomState(false);
-      localStorage.removeItem("access"); //access토큰 삭제}
+      localStorage.removeItem("access"); //access토큰 삭제
     }
   };
   return (
