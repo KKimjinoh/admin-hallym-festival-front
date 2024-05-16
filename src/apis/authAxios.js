@@ -5,7 +5,7 @@ import { getNewRefreshToken } from "./refresh";
 export const getAuthAxios = (token) => {
   const accessToken = token;
   const authAxios = axios.create({
-    baseURL: "http://13.209.218.51/api/admin",
+    baseURL: "http://localhost:8080/api/admin",
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
