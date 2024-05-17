@@ -3,7 +3,7 @@ import axios from "axios";
 export const getNewRefreshToken = async () => {
   console.log("재발급 로직");
   const result = await axios.post(
-    "http://13.209.218.51/api/admin/reissue", //리프레쉬 토큰 재발급하는 api
+    "https://kim-sun-woo.com/api/admin/reissue", //리프레쉬 토큰 재발급하는 api
     {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("access")}`,
