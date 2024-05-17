@@ -21,12 +21,20 @@ createInstance.interceptors.response.use(
       error.response.status === 401 ||
       error.response.message === "토큰오류"
     ) {
-      const accessToken = await getNewRefreshToken();
-      console.log("reisue 실행");
-      error.config.headers.Authorization = accessToken;
-      localStorage.setItem("access", accessToken);
-      return (await axios.get(error.config.url, error.config)).data;
+      try {
+        const accessToken = await getNewRefreshToken();
+        console.log("재발급 실행");
+        error.config.headers.Authorization = `Bearer ${accessToken}`;
+        localStorage.setItem("access", accessToken);
+
+        // 원래 요청을 복제하고 다시 시도함
+        return axios.request(error.config);
+      } catch (tokenError) {
+        console.error("토큰 재발급 실패", tokenError);
+        return Promise.reject(tokenError);
+      }
     }
+    return Promise.reject(error);
   }
 );
 
