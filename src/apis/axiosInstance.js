@@ -25,7 +25,7 @@ createInstance.interceptors.response.use(
         const accessToken = await getNewRefreshToken();
         console.log("재발급 실행");
         error.config.headers.Authorization = `Bearer ${accessToken}`;
-        localStorage.setItem("access", accessToken);
+        localStorage.setItem("access", accessToken.accessToken);
 
         // 원래 요청을 복제하고 다시 시도함
         return axios.request(error.config);
