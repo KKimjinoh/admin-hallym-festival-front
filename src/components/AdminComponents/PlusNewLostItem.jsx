@@ -1,7 +1,6 @@
 import { React, useState } from "react";
 import AdminHeader from "./AdminHeader.jsx";
 import Background from "../Layout/Background.jsx";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./PlusNewLostItem.scss";
 // import Resizer from "react-image-file-resizer";
@@ -37,23 +36,9 @@ const PlusNewLostItem = () => {
     formData.append("image", imageFile);
     formData.append("name", stringData.name);
     formData.append("location", stringData.location);
-
-    try {
-      const response = await axios.post(
-        "https://13.209.218.51/api/admin/find/create",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-      if (response.status >= 200 && response.status < 300) {
-        console.log("전송선공");
-        navigate(-1);
-      }
-    } catch (error) {
-      console.log("전송실패");
+    if (clickPostData(formData)) {
+      console.log("분실물 등록 완료");
+      navigate(-1);
     }
   };
 
