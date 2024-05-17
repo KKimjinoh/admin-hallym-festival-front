@@ -5,7 +5,7 @@ import { getNewRefreshToken } from "./refresh";
 const access = localStorage.getItem("access");
 
 const createInstance = axios.create({
-  baseURL: "https://13.209.218.51/api/admin", // 기본 URL 설정
+  baseURL: "http://13.209.218.51/api/admin", // 기본 URL 설정
   timeout: 10000,
   headers: {
     Authorization: `Bearer ${access}`,
@@ -22,7 +22,7 @@ createInstance.interceptors.response.use(
       error.response.message === "토큰오류"
     ) {
       const accessToken = await getNewRefreshToken();
-      console.log("reisue: 니가 모르게 뒤에서 다 일한다 임마");
+      console.log("reisue 실행");
       error.config.headers.Authorization = accessToken;
       localStorage.setItem("access", accessToken);
       return (await axios.get(error.config.url, error.config)).data;

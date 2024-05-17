@@ -23,7 +23,7 @@ const SearchCommuBoard = ({ searchText }) => {
         const response = await getCommunity();
         const reversedArticles = response.data.reverse();
         setArticle(reversedArticles);
-        printDate(); //
+        printDate();
       } catch (error) {
         console.log("Failed to fetch community data");
       }
@@ -58,15 +58,12 @@ const SearchCommuBoard = ({ searchText }) => {
       const nowMin = now.getMinutes(); //분
       if (nowDate !== fromServerDate.day) {
         nowDate - fromServerDate.day;
-        // setShowTime(`${nowDate - fromServerDate.day}일전`);
         item.showDate = `${nowDate - fromServerDate.day}일전`;
       } else {
         if (fromServerDate.hour < nowHour) {
           item.showDate = `${-1 * (fromServerDate.hour - nowHour)}시간 전`;
-          // setShowTime(`${-1 * (fromServerDate.hour - nowHour)}시간 전`);
         } else {
           if (fromServerDate.minute < nowMin) {
-            // setShowTime(`${-1 * (fromServerDate.minute - nowMin)}분 전`);
             item.showDate = `${-1 * (fromServerDate.minute - nowMin)}분 전`;
           } else {
             item.showDate = "지금";
