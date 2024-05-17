@@ -27,7 +27,8 @@ const Login = () => {
         loginForm.username,
         loginForm.password
       );
-      localStorage.setItem("access", accessToken); // 추후 해시 암호화 하기
+      console.log("ssssssssssss", accessToken.accessToken);
+      localStorage.setItem("access", accessToken.accessToken); // 추후 해시 암호화 하기
 
       setLoginAtomState(true);
       console.log("토큰 불러온 후, recoil: login state=", loginAtomState);

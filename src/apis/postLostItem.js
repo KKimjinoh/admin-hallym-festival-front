@@ -24,7 +24,7 @@ createInstance.interceptors.response.use(
       const accessToken = await getNewRefreshToken();
       console.log("reisue 실행");
       error.config.headers.Authorization = accessToken;
-      localStorage.setItem("access", accessToken);
+      localStorage.setItem("access", accessToken.accessToken);
       return (await axios.get(error.config.url, error.config)).data;
     }
   }
