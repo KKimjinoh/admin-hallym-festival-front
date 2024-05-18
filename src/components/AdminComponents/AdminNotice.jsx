@@ -39,7 +39,7 @@ const AdminNotice = () => {
   };
   return (
     <div className="admin_notice" onClick={handleCloseModal}>
-      <Background />
+      <Background hasPub={true} />
       <AdminHeader headcenter="관리자 공지사항" />
       <div className="admin_notice-container">
         <div className="admin_notice-container-wrapper">
@@ -73,6 +73,12 @@ const AdminNotice = () => {
                     </div>
                   </div>
                 ))}
+                <div className="items_head">
+                  <div className="title">
+                    <p id="under_item">※공지사항은 삭제가 불가합니다.※</p>
+                  </div>
+                  <div className="rewrite"></div>
+                </div>
               </div>
               <div className="admin_notice-container-wrapper-btn">
                 <div //svg 쓰기로 바꾸기

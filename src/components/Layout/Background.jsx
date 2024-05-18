@@ -1,6 +1,6 @@
 import React from "react";
 import "./Background.css";
-// import logo1 from "../../assets/logo1.webp";
+import logo1 from "../../assets/logo1.webp";
 
 const Background = ({ hasLogo, hasGidam, hasPub }) => {
   return (
@@ -9,7 +9,11 @@ const Background = ({ hasLogo, hasGidam, hasPub }) => {
         hasPub ? "hasPub" : ""
       } backgroundStyle`}
     >
-      {hasLogo && <div className="logo1"></div>}
+      {hasLogo && (
+        <div className="logo1">
+          <img src={logo1} alt="logo1" />
+        </div>
+      )}
     </div>
   );
 };
