@@ -5,15 +5,12 @@ import Background from "../Layout/Background.jsx";
 import { deleteLostItem, getLostList } from "../../apis/axios.js";
 import { useNavigate } from "react-router-dom";
 import "./AdminLostItem.scss";
-import { useRecoilValue } from "recoil";
-import { LoginAtom } from "../../recoil/LoginAtom.js";
 const AdminLostItem = () => {
   const [data, setData] = useState([]);
   const [load, setLoad] = useState(true);
   const navigate = useNavigate();
-  const isLogin = useRecoilValue(LoginAtom); // Recoil 상태를 가져옴
   useEffect(() => {
-    if (!isLogin) navigate("/");
+    if (!localStorage.getItem("access")) navigate("/");
   }, []);
   // 데이터 리스트 get
   const dataList = async () => {
@@ -33,7 +30,6 @@ const AdminLostItem = () => {
 
         setData(newTime);
         setLoad(true);
-        console.log(res.data[0].upload_time);
       });
       console.log("데이터 수신");
     } catch (e) {

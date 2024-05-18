@@ -5,7 +5,7 @@ import { getNewRefreshToken } from "./refresh";
 const access = localStorage.getItem("access");
 
 const createInstance = axios.create({
-  baseURL: "http://localhost:8080/api/admin", // 기본 URL 설정
+  baseURL: "https://kim-sun-woo.com/api/admin", // 기본 URL 설정
   timeout: 10000,
   headers: {
     Authorization: `Bearer ${access}`,

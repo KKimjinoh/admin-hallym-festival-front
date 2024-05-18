@@ -81,14 +81,17 @@ const SearchCommuBoard = ({ searchText }) => {
   return (
     <div className="commuBoard_root">
       {filteredArticles && (
-        <div className="commuBoard_under_root" onClick={clickCloseModal}>
+        <div
+          className="commuBoard_under_root"
+          onClick={() => clickCloseModal()}
+        >
           <div className="commuBoard_under_root_under">
             {filteredArticles.map((item, key) => (
               <div className="communComponent" key={key}>
                 <div className="communComponent-bundle">
                   <div className="communComponent-box">
                     <div className="communComponent-box-left">
-                      <div className="noName">익명{item.id}</div>
+                      <div className="noName">{item.nickname}</div>
                       <div>{item.showDate}</div>
                     </div>
                     <svg

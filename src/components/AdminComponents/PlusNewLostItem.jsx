@@ -3,17 +3,13 @@ import AdminHeader from "./AdminHeader.jsx";
 import Background from "../Layout/Background.jsx";
 import { useNavigate } from "react-router-dom";
 import "./PlusNewLostItem.scss";
-// import Resizer from "react-image-file-resizer";
-import { useRecoilValue } from "recoil";
-import { LoginAtom } from "../../recoil/LoginAtom.js";
 import { useEffect } from "react";
 import clickPostData from "../../apis/postLostItem.js";
 
 const PlusNewLostItem = () => {
-  const isLogin = useRecoilValue(LoginAtom); // Recoil 상태를 가져옴
   const navigate = useNavigate();
   useEffect(() => {
-    if (!isLogin) navigate("/");
+    if (!localStorage.getItem("access")) navigate("/");
   }, []);
 
   const [stringData, setStringData] = useState({
