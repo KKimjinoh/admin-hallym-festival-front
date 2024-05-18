@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { loginApi } from "../../apis/loginApi";
 import { useNavigate } from "react-router-dom";
 import { LoginAtom } from "../../recoil/LoginAtom";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { Background } from "../../components";
 import "./Login.scss";
 const Login = () => {
@@ -10,10 +10,15 @@ const Login = () => {
     username: "",
     password: "",
   });
-  const isLogin = useRecoilValue(LoginAtom); // Recoil 상태를 가져옴
+  // const isLogin = useRecoilValue(LoginAtom); // Recoil 상태를 가져옴
 
   const navigate = useNavigate();
   const [loginAtomState, setLoginAtomState] = useRecoilState(LoginAtom);
+  useEffect(() => {
+    if (loginAtomState) {
+      console.log("login 상태는", loginAtomState);
+    }
+  }, [loginAtomState]);
   // const setLoginAtom = useSetRecoilState(LoginAtom);
 
   const submitLogin = async () => {
@@ -28,17 +33,20 @@ const Login = () => {
         loginForm.username,
         loginForm.password
       );
-      console.log(accessToken);
-      console.log("ssssssssssss", accessToken);
-      localStorage.setItem("access", accessToken.accessToken); // 추후 해시 암호화 하기
-
-      setLoginAtomState(true);
-      console.log(isLogin);
-
-      console.log("토큰 불러온 후, recoil: login state=", loginAtomState);
-      console.log("login 성공! 로컬스토리지를 확인해주세요");
-      navigate("/admin");
-      // setLoginAtom(true); ->아톰을 불러오지 않고 세팅만 할 경우 useSetRecoilState만 사용
+      console.log(typeof accessToken.accessToken);
+      console.log("ssssssssssss", accessToken.accessToken);
+      if (
+        accessToken.accessToken === null ||
+        accessToken.accessToken === undefined ||
+        typeof accessToken.accessToken !== "string"
+      ) {
+        setLoginAtomState(false);
+      } else {
+        localStorage.setItem("access", accessToken.accessToken); // 추후 해시 암호화 하기
+        console.log("localstorage에 저장");
+        setLoginAtomState(true);
+        navigate("/admin");
+      }
     } catch (error) {
       setLoginAtomState(false);
       console.log("로그인 실패, recoil: login state= ", loginAtomState);

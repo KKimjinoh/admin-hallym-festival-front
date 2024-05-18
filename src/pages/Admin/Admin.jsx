@@ -25,11 +25,12 @@ const Admin = () => {
       try {
         const result = await logout();
         console.log(result);
+        setLoginAtomState(false);
+        localStorage.removeItem("access"); //access토큰 삭제
       } catch (error) {
         console.log(error);
+        console.log("로그아웃 실패");
       }
-      setLoginAtomState(false);
-      localStorage.removeItem("access"); //access토큰 삭제
     }
   };
   return (
