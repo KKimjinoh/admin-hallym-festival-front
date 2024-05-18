@@ -36,7 +36,7 @@ const SearchCommuBoard = ({ searchText }) => {
       const filtered = article.filter(
         (article) =>
           article.content.includes(searchText) ||
-          Number(searchText) === article.id
+          article.nickname.includes(searchText)
       );
 
       setFilteredArticles(filtered);
