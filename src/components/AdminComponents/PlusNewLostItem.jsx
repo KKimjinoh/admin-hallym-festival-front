@@ -3,15 +3,13 @@ import AdminHeader from "./AdminHeader.jsx";
 import Background from "../Layout/Background.jsx";
 import { useNavigate } from "react-router-dom";
 import "./PlusNewLostItem.scss";
-// import Resizer from "react-image-file-resizer";
-import { useRecoilValue } from "recoil";
-import { LoginAtom } from "../../recoil/LoginAtom.js";
 import { useEffect } from "react";
+import clickPostData from "../../apis/postLostItem.js";
+
 const PlusNewLostItem = () => {
-  const isLogin = useRecoilValue(LoginAtom); // Recoil 상태를 가져옴
   const navigate = useNavigate();
   useEffect(() => {
-    if (!isLogin) navigate("/");
+    if (!localStorage.getItem("access")) navigate("/");
   }, []);
 
   const [stringData, setStringData] = useState({
@@ -31,15 +29,20 @@ const PlusNewLostItem = () => {
     setPreImageURL(previews[0]);
   };
 
-  const clickPostData = async () => {
+  const clickPost = async () => {
     const formData = new FormData();
     formData.append("image", imageFile);
     formData.append("name", stringData.name);
     formData.append("location", stringData.location);
-    if (clickPostData(formData)) {
-      console.log("분실물 등록 완료");
-      navigate(-1);
+    try {
+      await clickPostData(formData);
+    } catch (error) {
+      console.log(error);
     }
+    // if (clickPostData(formData)) {
+    //   console.log("분실물 등록 완료");
+    //   navigate(-1);
+    // }
   };
 
   return (
@@ -52,7 +55,7 @@ const PlusNewLostItem = () => {
           <div className="PlusItem-wrapper-body-title">
             <div className="box1"></div>
             <div className="box2">등록하기</div>
-            <div className="postBtn" onClick={() => clickPostData()}>
+            <div className="postBtn" onClick={() => clickPost()}>
               등록
             </div>
           </div>

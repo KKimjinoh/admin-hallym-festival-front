@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import { React, useState } from "react";
 import { loginApi } from "../../apis/loginApi";
 import { useNavigate } from "react-router-dom";
-import { LoginAtom } from "../../recoil/LoginAtom";
-import { useRecoilState } from "recoil";
 import { Background } from "../../components";
 import "./Login.scss";
 const Login = () => {
@@ -10,34 +8,26 @@ const Login = () => {
     username: "",
     password: "",
   });
+  // const isLogin = useRecoilValue(LoginAtom); // Recoil 상태를 가져옴
 
   const navigate = useNavigate();
-  const [loginAtomState, setLoginAtomState] = useRecoilState(LoginAtom);
+
   // const setLoginAtom = useSetRecoilState(LoginAtom);
 
   const submitLogin = async () => {
     // e.preventDefault(); //submit시 기본 브라우저 동작인 새로고침을 막음
 
     try {
-      console.log(
-        "아직 토큰 불러오기 전, recoil: login state=",
-        loginAtomState
-      );
       const accessToken = await loginApi(
         loginForm.username,
         loginForm.password
       );
-      console.log("ssssssssssss", accessToken.accessToken);
-      localStorage.setItem("access", accessToken.accessToken); // 추후 해시 암호화 하기
 
-      setLoginAtomState(true);
-      console.log("토큰 불러온 후, recoil: login state=", loginAtomState);
-      console.log("login 성공! 로컬스토리지를 확인해주세요");
+      localStorage.setItem("access", accessToken.accessToken); // 추후 해시 암호화 하기
+      console.log("localstorage에 저장");
       navigate("/admin");
-      // setLoginAtom(true); ->아톰을 불러오지 않고 세팅만 할 경우 useSetRecoilState만 사용
     } catch (error) {
-      setLoginAtomState(false);
-      console.log("로그인 실패, recoil: login state= ", loginAtomState);
+      console.log("로그인 실패, recoil: login state= ");
     }
   };
 

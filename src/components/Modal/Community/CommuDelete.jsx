@@ -10,6 +10,7 @@ const CommuDelete = ({ id, closeModal }) => {
       //delete완료시 모달 닫음
       if (result) {
         closeModal();
+        window.location.reload();
       }
     } catch (error) {
       console.log(error);

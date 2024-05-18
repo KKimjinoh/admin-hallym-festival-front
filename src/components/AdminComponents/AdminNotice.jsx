@@ -4,14 +4,11 @@ import Background from "../Layout/Background.jsx";
 import NoticeModal from "../AdminModal/NoticeModal.jsx";
 import "./AdminNotice.scss";
 import { getNoticeList } from "../../apis/axios.js";
-import { useRecoilValue } from "recoil";
-import { LoginAtom } from "../../recoil/LoginAtom.js";
 import { useNavigate } from "react-router-dom";
 const AdminNotice = () => {
-  const isLogin = useRecoilValue(LoginAtom); // Recoil 상태를 가져옴
   const navigate = useNavigate();
   useEffect(() => {
-    if (!isLogin) navigate("/");
+    if (!localStorage.getItem("access")) navigate("/");
   }, []);
 
   const [notices, setNotices] = useState([]);
@@ -58,9 +55,6 @@ const AdminNotice = () => {
                       <div
                         className="rewrite"
                         onClick={() => {
-                          () => {
-                            console.log(notice.id);
-                          };
                           setNoticeID(notice.id);
                           setClickItem("put");
                           setPutDate({

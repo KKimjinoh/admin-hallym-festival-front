@@ -4,8 +4,6 @@ import "./CommuBoard.scss";
 import CommuDelete from "../Modal/Community/CommuDelete.jsx";
 import { getCommunity } from "../../apis/axios.js";
 
-import { useRecoilValue } from "recoil";
-import { LoginAtom } from "../../recoil/LoginAtom.js";
 import { useNavigate } from "react-router-dom";
 //라펙토링 시 함수 api분리 및 커스텀 훅 분리하여 선언적 상태 만들기
 
@@ -18,10 +16,9 @@ function parseDateTime(dateTimeStr) {
 }
 
 const CommuBoard = () => {
-  const isLogin = useRecoilValue(LoginAtom); // Recoil 상태를 가져옴
   const navigate = useNavigate();
   useEffect(() => {
-    if (!isLogin) navigate("/");
+    if (!localStorage.getItem("access")) navigate("/");
   }, []);
   const [clickDot, setClickDot] = useState(false);
   const [articleID, setArticleID] = useState(-1);
@@ -92,7 +89,7 @@ const CommuBoard = () => {
                   <div className="communComponent-bundle">
                     <div className="communComponent-box">
                       <div className="communComponent-box-left">
-                        <div className="noName">익 명{item.id}</div>
+                        <div className="noName">{item.nickname}</div>
                         <div>{item.showDate}</div>
                       </div>
                       <svg
