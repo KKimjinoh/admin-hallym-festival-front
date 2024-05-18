@@ -58,7 +58,7 @@ const AdminLostItem = () => {
   };
   return (
     <div className="lostItem">
-      <Background />
+      <Background hasPub={"hasPub"} />
       <Header headcenter="관리자 분실물" />
       {load ? (
         <div className="list_wrapper">
