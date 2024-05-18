@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { loginApi } from "../../apis/loginApi";
 import { useNavigate } from "react-router-dom";
 import { LoginAtom } from "../../recoil/LoginAtom";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { Background } from "../../components";
 import "./Login.scss";
 const Login = () => {
@@ -10,6 +10,7 @@ const Login = () => {
     username: "",
     password: "",
   });
+  const isLogin = useRecoilValue(LoginAtom); // Recoil 상태를 가져옴
 
   const navigate = useNavigate();
   const [loginAtomState, setLoginAtomState] = useRecoilState(LoginAtom);
@@ -27,10 +28,13 @@ const Login = () => {
         loginForm.username,
         loginForm.password
       );
-      console.log("ssssssssssss", accessToken.accessToken);
+      console.log(accessToken);
+      console.log("ssssssssssss", accessToken);
       localStorage.setItem("access", accessToken.accessToken); // 추후 해시 암호화 하기
 
       setLoginAtomState(true);
+      console.log(isLogin);
+
       console.log("토큰 불러온 후, recoil: login state=", loginAtomState);
       console.log("login 성공! 로컬스토리지를 확인해주세요");
       navigate("/admin");
