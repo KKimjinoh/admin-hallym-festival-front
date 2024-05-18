@@ -48,20 +48,24 @@
       margin-right: 20px;
     }
     .text {
+      font-size: 13px;
       height: 40px;
       width: 70%;
       color: white;
       line-height: 40px;
       &-t1 {
-        height: 40px;
+        margin-bottom: 10px;
+        height: 20px;
         width: 100%;
         display: flex;
         // background-color: rgb(144, 110, 66);
         justify-content: space-between;
         align-content: center;
         .item_name {
+          height: 20px;
           width: 90%;
-          //   background-color: antiquewhite;
+          line-height: 20px;
+          // background-color: antiquewhite;
         }
         .trash {
           width: 16px;
@@ -71,6 +75,16 @@
           background-repeat: no-repeat;
           // fill: rgb(209, 209, 209);
         }
+      }
+      &-t2 {
+        height: 20px;
+        line-height: 20px;
+        margin-bottom: 10px;
+      }
+      &-t3 {
+        height: 20px;
+        line-height: 20px;
+        margin-bottom: 10px;
       }
     }
 
