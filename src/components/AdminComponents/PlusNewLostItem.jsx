@@ -36,6 +36,7 @@ const PlusNewLostItem = () => {
     formData.append("location", stringData.location);
     try {
       await clickPostData(formData);
+      navigate(-1);
     } catch (error) {
       console.log(error);
     }
@@ -47,7 +48,7 @@ const PlusNewLostItem = () => {
 
   return (
     <div className="PlusItem">
-      <Background />
+      <Background hasPub={"hasPub"} />
       <AdminHeader headcenter="관리자 분실물 추가" />
       <div className="PlusItem-wrapper">
         <div className="PlusItem-wrapper-head"></div>
