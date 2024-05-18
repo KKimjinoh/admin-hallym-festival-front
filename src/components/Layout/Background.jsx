@@ -13,7 +13,7 @@ const Background = ({ hasLogo, hasGidam, hasPub }) => {
         <div className="logo1">
           <img src={logo1} alt="logo1" />
         </div>
-      )}{" "}
+      )}
     </div>
   );
 };

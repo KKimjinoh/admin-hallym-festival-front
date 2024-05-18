@@ -43,7 +43,7 @@ const NoticeModal = ({ id, putOrPost, onClose, originData }) => {
         <div className="NoticeModal-body-article">
           <div className="NoticeModal-body-article-form">
             <div className="NoticeModal-body-article-form-in">
-              <label>제목</label>
+              <label>제목 ( 굵은 글씨)</label>
               <input
                 type="text"
                 placeholder="제목을 입력하세요"
@@ -55,7 +55,7 @@ const NoticeModal = ({ id, putOrPost, onClose, originData }) => {
               <div className="errMessage"></div>
             </div>
             <div className="NoticeModal-body-article-form-in">
-              <label>남기고 싶은 말을 자세히 적어주세요.</label>
+              <label>본문 (작은글씨)</label>
               <textarea
                 type="text"
                 placeholder="본문을 작성해 주세요"
