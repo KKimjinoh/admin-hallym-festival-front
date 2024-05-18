@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import AdminHeader from "./AdminHeader.jsx";
-import Header from "../Header/Header.jsx";
+import Header from "../Layout/Header.jsx";
 import Background from "../Layout/Background.jsx";
 import { deleteLostItem, getLostList } from "../../apis/axios.js";
 import { useNavigate } from "react-router-dom";
