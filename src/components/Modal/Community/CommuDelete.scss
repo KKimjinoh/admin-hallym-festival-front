@@ -1,8 +1,20 @@
+.delete-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  // background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; // 필요에 따라 z-index를 조정하세요.
+}
+
 .delete {
   font-family: "Pretendard-Regular";
-  margin-top: 50%;
-  width: 76%;
-  height: 10%;
+  width: 80%;
+  height: 19%;
   background-color: rgb(252, 252, 252);
   position: fixed;
   border-radius: 7px;
@@ -20,20 +32,17 @@
     &-subtitle {
       font-size: 10px;
     }
-
     &-input {
       display: flex;
       justify-content: center;
       height: 15%;
       border-radius: 7px;
-
       input {
         border: none;
         border-bottom: #8a8a8a 1px solid;
         background-color: rgb(252, 252, 252);
       }
     }
-
     &-notice {
       font-size: 11px;
       color: #8a8a8a;
