@@ -41,6 +41,7 @@ const AdminLostItem = () => {
 
   const clilckDeleteLostItem = async (id) => {
     try {
+      confirm("삭제를 원한다면 확인을 눌러주세요");
       setLoad(false);
       const response = await deleteLostItem(id);
       if (response) {
