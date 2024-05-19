@@ -13,8 +13,9 @@ export const loginApi = async (id, pw) => {
         //http only cookie 허용 ->refresh토큰 가져옴, 클라이언트 측에서 확인 불가
       }
     );
-    return response.data;
+    return response;
   } catch (error) {
+    alert("로그인 실패");
     console.log("loginApi 함수: 로그인 실패!", error);
   }
 };
