@@ -1,31 +1,47 @@
 import React, { useEffect, useState } from "react";
 import "./NoticeModal.scss";
 import { postNoticeList, putNoticeList } from "../../apis/axios";
+
 const NoticeModal = ({ id, putOrPost, onClose, originData }) => {
-  const mode = putOrPost; //http method결정
+  const mode = putOrPost; //http method 결정
   const [inputData, setInputData] = useState({
     title: "",
     content: "",
   });
+
   useEffect(() => {
     if (mode === "put") {
       setInputData({ title: originData.title, content: originData.content });
     }
   }, []);
 
-  // const{originTitle,originContent}=originData
+  useEffect(() => {
+    const handleScroll = (e) => {
+      e.preventDefault();
+    };
+
+    document.body.style.overflow = "hidden"; // 모달이 열렸을 때 스크롤 비활성화
+    window.addEventListener("touchmove", handleScroll, { passive: false });
+
+    return () => {
+      document.body.style.overflow = "auto"; // 모달이 닫힐 때 스크롤 활성화
+      window.removeEventListener("touchmove", handleScroll);
+    };
+  }, []);
+
   const clickPutOrPost = async () => {
     try {
       mode === "post"
         ? await postNoticeList(inputData)
         : await putNoticeList(id, inputData);
-      onClose(); //성공하면 모달 닫기
+      onClose(); // 성공하면 모달 닫기
     } catch (error) {
       console.log(".");
     }
   };
+
   return (
-    <div className="NoticeModal">
+    <div className="NoticeModal" onClick={onClose}>
       <div className="NoticeModal-body" onClick={(e) => e.stopPropagation()}>
         <div className="NoticeModal-body-title">
           <div className="NoticeModal-body-title-item"></div>
