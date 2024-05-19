@@ -74,8 +74,8 @@ const AdminNotice = () => {
                   </div>
                 ))}
                 <div className="items_head">
-                  <div className="title">
-                    <p id="under_item">※공지사항은 삭제가 불가합니다.※</p>
+                  <div className="title_under">
+                    <div id="under_item">※공지사항은 삭제가 불가합니다.※</div>
                   </div>
                   <div className="rewrite"></div>
                 </div>
