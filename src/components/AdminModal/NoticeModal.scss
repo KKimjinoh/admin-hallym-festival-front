@@ -1,17 +1,17 @@
 .NoticeModal {
-  position: fixed; /* 위치를 고정시킵니다 */
-  bottom: 0; /* 화면 바닥에서부터 40vh의 위치에 모달의 하단을 고정 */
+  position: fixed;
+  bottom: 0;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  align-content: center;
   text-align: center;
+
   &-body {
     width: 100%;
     height: 80vh;
-    background-color: #000000d0;
+    background-color: #000000e1;
     color: #ffffff;
     border-radius: 24px 24px 0px 0px;
 
@@ -20,7 +20,6 @@
       display: flex;
       justify-content: space-around;
       align-items: center;
-      text-align: start;
       height: 6%;
       width: 100%;
       margin-top: 3%;
@@ -29,7 +28,7 @@
         font-family: "KoPubWorld Batang_Pro";
       }
       &-item {
-        width: 33%;
+        width: 26%;
         height: 28px;
         font-size: 18.3px;
       }
@@ -52,21 +51,24 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
+
       &-form {
         margin-top: 8%;
         width: 80%;
         text-align: start;
+
         &-in {
           display: flex;
           flex-direction: column;
+
           label {
             font-size: 15px;
             color: #c8c8c8;
             margin-bottom: 2%;
           }
+
           input {
             font-size: 15px;
-
             background-color: #000000d0;
             color: #ffffff;
             height: 30px;
@@ -81,7 +83,7 @@
           textarea {
             background-color: #000000d0;
             color: #ffffff;
-
+            font-size: 15px;
             width: 100%;
             height: 13vh;
             border-bottom: 1px solid #bdbdbd;
@@ -89,10 +91,12 @@
             outline: none;
             border-radius: 0px 0px 5px 5px;
           }
+
           .errMessage {
             color: red;
             font-size: 12px;
           }
+
           .underTextarea {
             display: flex;
             justify-content: space-between;

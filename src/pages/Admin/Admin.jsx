@@ -20,6 +20,7 @@ const Admin = () => {
         const result = await logout();
         console.log(result);
         localStorage.removeItem("access"); //access토큰 삭제
+        navigate("/");
       } catch (error) {
         console.log(error);
         console.log("로그아웃 실패");

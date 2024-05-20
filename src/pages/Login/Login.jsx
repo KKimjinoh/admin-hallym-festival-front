@@ -22,8 +22,7 @@ const Login = () => {
         loginForm.username,
         loginForm.password
       );
-
-      localStorage.setItem("access", accessToken.accessToken); // 추후 해시 암호화 하기
+      localStorage.setItem("access", accessToken.data.accessToken); // 추후 해시 암호화 하기
       console.log("localstorage에 저장");
       navigate("/admin");
     } catch (error) {
