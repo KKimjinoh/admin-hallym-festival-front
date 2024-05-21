@@ -16,10 +16,8 @@ const PlusNewLostItem = () => {
     name: "",
     location: "",
   });
-
   const [imageFile, setImageFile] = useState(null);
   const [preImageURL, setPreImageURL] = useState("");
-
   const handleImageChange = async (e) => {
     const img = await e.target.files[0];
     setImageFile(e.target.files[0]);
